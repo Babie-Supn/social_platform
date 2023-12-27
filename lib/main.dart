@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:social_platform/pages/tabs.dart';
+import 'package:social_platform/pages/tabs_page.dart';
 import './pages/tabs/users_page.dart';
+import './theme/theme_data.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final theme = ThemeData(
+    useMaterial3: true,
+    colorScheme: lightColorScheme,
+  );
+  final darkTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: darkColorScheme,
+  );
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
-      // home: const AllPages(),
-      initialRoute: "/",
-      routes: {
-        "/": (context) => TabsPage(),
-        "/user": (context) => const UsersPage()
-      },
+      theme: theme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.light,
+      home: const AllPages(),
+      // initialRoute: "/",
+      // routes: {
+      //   "/": (context) => TabsPage(),
+      //   "/user": (context) => const UsersPage()
+      // },
     );
   }
 }

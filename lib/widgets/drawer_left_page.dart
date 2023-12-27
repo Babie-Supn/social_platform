@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pages/users_info_page.dart';
+import '../pages/user_info_page.dart';
 
 class DrawerLeftPage extends StatefulWidget {
   const DrawerLeftPage({super.key});
@@ -12,7 +12,6 @@ class _DrawerLeftPageState extends State<DrawerLeftPage> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromARGB(212, 255, 255, 255),
       child: Stack(
         children: <Widget>[
           Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_platform/pages/tabs.dart';
+import 'package:social_platform/pages/tabs_page.dart';
 
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({super.key});

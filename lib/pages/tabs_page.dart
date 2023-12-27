@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, must_be_immutable
+// ignore_for_file: avoid_print, must_be_immutable, must_call_super
 
 import 'package:flutter/material.dart';
 import './tabs/addblog_page.dart';
@@ -23,6 +23,7 @@ class _TabsPageState extends State<TabsPage> {
   @override
   void initState() {
     // TODO: implement initState
+    super.initState();
     _index = widget.indexCount;
   }
 
@@ -36,7 +37,6 @@ class _TabsPageState extends State<TabsPage> {
               _index = value;
             });
           },
-          fixedColor: Colors.yellow,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
             // BottomNavigationBarItem(icon: Icon(Icons.add), label: "添加"),
@@ -47,9 +47,10 @@ class _TabsPageState extends State<TabsPage> {
         width: 55,
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+          borderRadius: BorderRadius.circular(5),
+          color: Theme.of(context).colorScheme.background,
+        ),
         child: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(31, 255, 255, 255),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           onPressed: () {
             Navigator.of(context)
@@ -57,6 +58,7 @@ class _TabsPageState extends State<TabsPage> {
               return const AddBlogPage();
             }));
           },
+          backgroundColor: Theme.of(context).colorScheme.background,
           child: const Icon(Icons.add),
         ),
       ),
