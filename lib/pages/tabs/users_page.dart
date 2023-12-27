@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../user_info_page.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
@@ -7,12 +8,22 @@ class UsersPage extends StatefulWidget {
   State<UsersPage> createState() => _UsersPageState();
 }
 
-class _UsersPageState extends State<UsersPage> {
+class _UsersPageState extends State<UsersPage>
+    with SingleTickerProviderStateMixin {
+  // late TabController _tabController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // _tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverAppBar(
+          stretch: true,
           pinned: true,
           expandedHeight: 200,
           backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -40,29 +51,83 @@ class _UsersPageState extends State<UsersPage> {
                 ),
               )
             ],
-          )
-          // bottom: PreferredSize(
-          //   preferredSize: const Size.fromHeight(24),
-          //   child: Container(
-          //     width: double.infinity,
-          //     decoration: const BoxDecoration(
-          //         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-          //         color: Colors.red),
-          //   ),
-          // ),
+          )),
+      SliverToBoxAdapter(
+        child: SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Container(
+                  padding: const EdgeInsets.all(1),
+                  height: 80,
+                  width: 80,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(40)),
+                  child: const CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://www.itying.com/images/flutter/3.png"),
+                  )),
+              const SizedBox(width: 10),
+              const SizedBox(
+                height: 80,
+                width: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "xxxx",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      "Uid: xxxxx",
+                      style: TextStyle(fontSize: 15),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
-      // SliverToBoxAdapter(
-      //   child: Container(
-      //     decoration: const BoxDecoration(
-      //         color: Colors.red,
-      //         borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
-      //     height: 100,
-      //     child: const Row(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [],
-      //     ),
-      //   ),
-      // )
+        ),
+      ),
+      const SliverToBoxAdapter(
+        child: Divider(),
+      ),
+      SliverToBoxAdapter(
+        child: SizedBox(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return const UserInfoPage();
+                  }));
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).colorScheme.onBackground),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3)))),
+                child: const Text("编辑资料"),
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).colorScheme.onBackground),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)))),
+                  child: const Text("分享主页"))
+            ],
+          ),
+        ),
+      ),
     ]));
   }
 }

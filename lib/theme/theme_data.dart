@@ -10,7 +10,7 @@ const lightColorScheme = ColorScheme(
     error: Color(0xFFED5501),
     onError: Color.fromARGB(226, 237, 84, 1),
     background: Color(0xFFF4F6F9), //主要容器背景色
-    onBackground: Color.fromARGB(255, 252, 252, 252),
+    onBackground: Color(0xFFF3F3F3),
     surface: Color(0xFFF7F8FD), //标题栏和卡片背景颜色
     onSurface: Color(0xFF464748)); //最基础字体色
 

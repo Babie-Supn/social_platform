@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../search_page.dart';
 import '../../widgets/drawer_left_page.dart';
+import '../../widgets/video_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage>
                 child: Text("关注"),
               ),
               Tab(
-                child: Text("推荐"),
+                child: Text("视频"),
               )
             ],
           ),
@@ -55,11 +56,9 @@ class _HomePageState extends State<HomePage>
       ),
       body: TabBarView(controller: _tabController, children: [
         ListView(
-          children: const [Text("关注card")],
-        ),
-        ListView(
           children: const [Text("推荐card")],
-        )
+        ),
+        const VideoPage(),
       ]),
     );
   }
