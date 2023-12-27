@@ -14,7 +14,9 @@ class _VideoPageState extends State<VideoPage> {
     return PageView(
       scrollDirection: Axis.vertical,
       children: const [
-        VideoPlay(assetUrl: 'lib/assets/video/video1.MP4'),
+        VideoPlay(
+          assetUrl: 'assets/video/video1.mp4',
+        ),
         Center(
           child: Text("第二个视频"),
         ),
