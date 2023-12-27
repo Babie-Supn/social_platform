@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../fonts/social_platform_icon.dart';
 
 class AddBlogPage extends StatefulWidget {
   const AddBlogPage({super.key});
@@ -14,9 +15,7 @@ class _AddBlogPageState extends State<AddBlogPage>
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(
-            Icons.back_hand,
-          ),
+          icon: const Icon(SocialPlatformIcon.back),
           onPressed: () {
             Navigator.of(context).pop();
           },

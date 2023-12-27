@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './tabs/addblog_page.dart';
 import './tabs/home_page.dart';
 import './tabs/users_page.dart';
+import '../fonts/social_platform_icon.dart';
 
 class TabsPage extends StatefulWidget {
   int indexCount = 0;
@@ -38,9 +39,11 @@ class _TabsPageState extends State<TabsPage> {
             });
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
+            BottomNavigationBarItem(
+                icon: Icon(SocialPlatformIcon.home), label: "首页"),
             // BottomNavigationBarItem(icon: Icon(Icons.add), label: "添加"),
-            BottomNavigationBarItem(icon: Icon(Icons.people), label: "用户")
+            BottomNavigationBarItem(
+                icon: Icon(SocialPlatformIcon.user), label: "用户")
           ]),
       floatingActionButton: Container(
         height: 55,
@@ -59,7 +62,7 @@ class _TabsPageState extends State<TabsPage> {
             }));
           },
           backgroundColor: Theme.of(context).colorScheme.background,
-          child: const Icon(Icons.add),
+          child: const Icon(SocialPlatformIcon.add),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -30,7 +30,7 @@ class _VideoPlayState extends State<VideoPlay> {
       autoPlay: true, //视频是否自动播放
       looping: true, //视频是否循环播放
       autoInitialize: true, //视频是否自动初始化
-      hideControlsTimer: const Duration(seconds: 1),
+      // hideControlsTimer: const Duration(seconds: 1),
     );
     setState(() {});
   }

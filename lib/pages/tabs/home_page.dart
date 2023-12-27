@@ -3,6 +3,7 @@ import 'package:social_platform/widgets/card_page_widget.dart';
 import '../search_page.dart';
 import '../../widgets/drawer_left_page.dart';
 import '../../widgets/video_page.dart';
+import '../../fonts/social_platform_icon.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,13 +52,21 @@ class _HomePageState extends State<HomePage>
                     return const SearchPage();
                   }));
                 },
-                icon: const Icon(Icons.search)),
+                icon: const Icon(SocialPlatformIcon.search)),
           ],
         ),
       ),
       body: TabBarView(controller: _tabController, children: [
         ListView(
-          children: const [CardPageWidget()],
+          children: const [
+            CardPageWidget(
+              headPhotoUrl: "https://www.itying.com/images/flutter/1.png",
+              imageUrlList: [
+                "https://www.itying.com/images/flutter/3.png",
+                "https://www.itying.com/images/flutter/3.png"
+              ],
+            ),
+          ],
         ),
         const VideoPage(),
       ]),

@@ -17,11 +17,11 @@ class _VideoPageState extends State<VideoPage> {
         VideoPlay(
           assetUrl: 'assets/video/video1.mp4',
         ),
-        Center(
-          child: Text("第二个视频"),
+        VideoPlay(
+          assetUrl: 'assets/video/video2.mp4',
         ),
-        Center(
-          child: Text("第三个视频"),
+        VideoPlay(
+          assetUrl: 'assets/video/video3.mp4',
         ),
       ],
     );
