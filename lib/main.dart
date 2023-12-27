@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_platform/pages/tabs_page.dart';
-import './pages/tabs/users_page.dart';
+// import './pages/tabs/users_page.dart';
 import './theme/theme_data.dart';
 
 void main() {

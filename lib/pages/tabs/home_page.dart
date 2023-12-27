@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_platform/widgets/card_page_widget.dart';
 import '../search_page.dart';
 import '../../widgets/drawer_left_page.dart';
 import '../../widgets/video_page.dart';
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage>
       ),
       body: TabBarView(controller: _tabController, children: [
         ListView(
-          children: const [Text("推荐card")],
+          children: const [CardPageWidget()],
         ),
         const VideoPage(),
       ]),
