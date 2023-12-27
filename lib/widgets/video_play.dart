@@ -12,7 +12,7 @@ class VideoPlay extends StatefulWidget {
 
 class _VideoPlayState extends State<VideoPlay> {
   late VideoPlayerController _videoPlayerController;
-  late ChewieController _chewieController;
+  ChewieController? _chewieController;
   @override
   void initState() {
     super.initState();
@@ -38,12 +38,16 @@ class _VideoPlayState extends State<VideoPlay> {
   @override
   void dispose() {
     _videoPlayerController.dispose();
-    _chewieController.dispose();
+    _chewieController?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Chewie(controller: _chewieController);
+    return _chewieController != null
+        ? Chewie(controller: _chewieController!)
+        : const Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }
