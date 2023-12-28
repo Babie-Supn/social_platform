@@ -1,7 +1,16 @@
 import 'package:social_platform/index.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  runApp(
+    ProviderScope(
+      overrides: [
+        persistenceProvider.overrideWithValue(
+          await Persistence.init(),
+        )
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -11,6 +11,7 @@ class VideoPlay extends StatefulWidget {
 class _VideoPlayState extends State<VideoPlay> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
+
   @override
   void initState() {
     super.initState();

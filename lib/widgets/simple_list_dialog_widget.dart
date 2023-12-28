@@ -1,54 +1,26 @@
 import 'package:social_platform/index.dart';
 
-class SimpleListDialogWidget extends StatefulWidget {
-  const SimpleListDialogWidget({super.key});
+class SelectGenderButton extends ConsumerStatefulWidget {
+  const SelectGenderButton({super.key});
 
   @override
-  State<SimpleListDialogWidget> createState() => _SimpleListDialogWidgetState();
+  ConsumerState<SelectGenderButton> createState() =>
+      _SimpleListDialogWidgetState();
 }
 
-class _SimpleListDialogWidgetState extends State<SimpleListDialogWidget> {
-  void _simpleDialog() async {
-    var result = await showDialog(
-        context: context,
-        builder: (context) {
-          return SimpleDialog(
-            alignment: Alignment.bottomCenter,
-            title: const Text(
-              "请选择性别",
-              style: TextStyle(fontSize: 15),
-            ),
-            surfaceTintColor: Theme.of(context).colorScheme.background,
-            titlePadding: const EdgeInsets.fromLTRB(100, 10, 0, 0),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 100),
-            children: [
-              SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, "女");
-                },
-                child: const Text("女"),
-              ),
-              Divider(
-                height: 0.5,
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, "男");
-                },
-                child: const Text("男"),
-              )
-            ],
-          );
-        });
-    print(result);
-  }
-
+class _SimpleListDialogWidgetState extends ConsumerState<SelectGenderButton> {
   @override
   Widget build(BuildContext context) {
+    final localStore = ref.watch(localStoreProvider);
+
     return TextButton(
       onPressed: () {
-        _simpleDialog();
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const GenderSelectDialog();
+          },
+        );
       },
       child: Row(
         children: [
@@ -59,14 +31,52 @@ class _SimpleListDialogWidgetState extends State<SimpleListDialogWidget> {
           ),
           const SizedBox(
             width: 10,
-          )
-          // TODO @Cierra-Runis
-          //隆子，这里请帮帮我加一个可以显示性别选择后结果显示的文本,要持久化滴
-          //
-          //
-          //
+          ),
+          Text(localStore.gender.name),
         ],
       ),
+    );
+  }
+}
+
+class GenderSelectDialog extends ConsumerWidget {
+  const GenderSelectDialog({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final setLocalStore = ref.watch(localStoreProvider.notifier);
+
+    return SimpleDialog(
+      alignment: Alignment.bottomCenter,
+      title: const Text(
+        "请选择性别",
+        style: TextStyle(fontSize: 15),
+      ),
+      surfaceTintColor: Theme.of(context).colorScheme.background,
+      titlePadding: const EdgeInsets.fromLTRB(100, 10, 0, 0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 100),
+      children: [
+        SimpleDialogOption(
+          onPressed: () {
+            setLocalStore.setGender(Gender.woman);
+            Navigator.pop(context);
+          },
+          child: const Text("女"),
+        ),
+        Divider(
+          height: 0.5,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
+        SimpleDialogOption(
+          onPressed: () {
+            setLocalStore.setGender(Gender.man);
+            Navigator.pop(context);
+          },
+          child: const Text("男"),
+        )
+      ],
     );
   }
 }

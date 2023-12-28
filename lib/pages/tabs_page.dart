@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, must_be_immutable, must_call_super
 
 import 'package:flutter/material.dart';
-import './tabs/addblog_page.dart';
+import 'tabs/add_blog_page.dart';
 import './tabs/home_page.dart';
 import './tabs/users_page.dart';
 import '../fonts/social_platform_icon.dart';
@@ -23,7 +23,6 @@ class _TabsPageState extends State<TabsPage> {
   ];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _index = widget.indexCount;
   }
