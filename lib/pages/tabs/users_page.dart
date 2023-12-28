@@ -22,8 +22,8 @@ class _UsersPageState extends State<UsersPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: [
-      SliverAppBar(
+      body: CustomScrollView(slivers: [
+        SliverAppBar(
           stretch: true,
           pinned: true,
           expandedHeight: 200,
@@ -57,86 +57,98 @@ class _UsersPageState extends State<UsersPage>
                 ),
               )
             ],
-          )),
-      SliverToBoxAdapter(
-        child: SizedBox(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                width: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.all(1),
-                height: 80,
-                width: 80,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(40)),
-                child: CircleAvatar(
-                  backgroundImage: personData[0]["isAssetsHead"]
-                      ? AssetImage(personData[0]["headImageUrl"])
-                          as ImageProvider
-                      : NetworkImage(personData[0]["headImageUrl"]),
-                ),
-              ),
-              const SizedBox(width: 10),
-              SizedBox(
-                height: 80,
-                width: 200,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      personData[0]["userName"],
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      "Uid: ${personData[0]["userID"]}",
-                      style: const TextStyle(fontSize: 15),
-                    )
-                  ],
-                ),
-              )
-            ],
           ),
         ),
-      ),
-      const SliverToBoxAdapter(
-        child: Divider(),
-      ),
-      SliverToBoxAdapter(
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return const UserInfoPage();
-                  }));
-                },
-                style: ButtonStyle(
+        SliverToBoxAdapter(
+          child: SizedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(1),
+                  height: 80,
+                  width: 80,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(40)),
+                  child: CircleAvatar(
+                    backgroundImage: personData[0]["isAssetsHead"]
+                        ? AssetImage(personData[0]["headImageUrl"])
+                            as ImageProvider
+                        : NetworkImage(personData[0]["headImageUrl"]),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 80,
+                  width: 200,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        personData[0]["userName"],
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        "Uid: ${personData[0]["userID"]}",
+                        style: const TextStyle(fontSize: 15),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: Divider(),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (BuildContext context) {
+                        return const UserInfoPage();
+                      }),
+                    );
+                  },
+                  style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                         Theme.of(context).colorScheme.onBackground),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3)))),
-                child: const Text("编辑资料"),
-              ),
-              ElevatedButton(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
+                  ),
+                  child: const Text("编辑资料"),
+                ),
+                ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          Theme.of(context).colorScheme.onBackground),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3)))),
-                  child: const Text("分享主页"))
-            ],
+                    backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).colorScheme.onBackground),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
+                  ),
+                  child: const Text("分享主页"),
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    ]));
+      ]),
+    );
   }
 }
