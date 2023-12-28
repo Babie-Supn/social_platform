@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import '../pages/user_info_page.dart';
-import '../fonts/social_platform_icon.dart';
+import 'package:social_platform/index.dart';
 
 class DrawerLeftPage extends StatefulWidget {
   final String headImageUrl;

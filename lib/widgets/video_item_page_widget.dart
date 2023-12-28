@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:social_platform/index.dart';
 
 class VideoItemPageWidget extends StatefulWidget {
   final VideoPlayerController controller;

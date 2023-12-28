@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:social_platform/widgets/video_play.dart';
+import 'package:social_platform/index.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({super.key});

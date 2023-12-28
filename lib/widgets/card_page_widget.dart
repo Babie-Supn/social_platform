@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:social_platform/widgets/image_page_widget.dart';
-import '../fonts/social_platform_icon.dart';
+import 'package:social_platform/index.dart';
 
 class CardPageWidget extends StatefulWidget {
   final String headPhotoUrl;

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:social_platform/index.dart';
 
 class ImagePageWidget extends StatefulWidget {
   final String assetsImgUrl;
