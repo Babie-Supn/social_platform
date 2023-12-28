@@ -12,7 +12,7 @@ const lightColorScheme = ColorScheme(
     background: Color(0xFFF4F6F9), //主要容器背景色
     onBackground: Color.fromARGB(255, 255, 255, 255),
     surface: Color(0xFFF7F8FD), //标题栏和卡片背景颜色
-    onSurface: Color(0xFF464748)); //最基础字体色
+    onSurface: Color.fromARGB(213, 70, 71, 72)); //最基础字体色
 
 //暗色主题  Color.fromARGB(206, 254, 123, 191)
 const darkColorScheme = ColorScheme(
