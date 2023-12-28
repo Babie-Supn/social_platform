@@ -1,21 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:social_platform/pages/tabs_page.dart';
-import 'package:social_platform/widgets/simple_list_dialog_widget.dart';
-import '../fonts/social_platform_icon.dart';
+import 'package:social_platform/index.dart';
 
-class UserInfoPage extends StatefulWidget {
+class UserInfoPage extends ConsumerStatefulWidget {
   const UserInfoPage({super.key});
 
   @override
-  State<UserInfoPage> createState() => _UserInfoPageState();
+  ConsumerState<UserInfoPage> createState() => _UserInfoPageState();
 }
 
-class _UserInfoPageState extends State<UserInfoPage> {
+class _UserInfoPageState extends ConsumerState<UserInfoPage> {
   //Text的Controller
-  final TextEditingController _unameController = TextEditingController();
+  late final TextEditingController _nameController = TextEditingController(
+    text: ref.watch(localStoreProvider).name,
+  );
 
   @override
   Widget build(BuildContext context) {
+    final setLocalStore = ref.watch(localStoreProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -32,18 +33,18 @@ class _UserInfoPageState extends State<UserInfoPage> {
         title: const Text("编辑资料"),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.onBackground,
-        // TODO @Cierra-Runis
-        //按钮在这了，靠你了^_^
-        //
-        //
         actions: [
           TextButton(
-              onPressed: () {},
-              child: Text(
-                "保存",
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.onSurface),
-              )),
+            onPressed: () {
+              setLocalStore.setName(_nameController.text);
+            },
+            child: Text(
+              "保存",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
         ],
       ),
       body: ListView(
@@ -70,15 +71,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         height: 50,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                          // TODO:@Cierra-Runis
-                          //这里输入用户名了，需要持久化
-                          //不过那个提交按钮需要吗，我写一个保存按钮，但我不知道怎么实现功能，靠你了^_^
-                          //
-                          //
                           child: TextField(
                             style: const TextStyle(
                                 fontSize: 15, overflow: TextOverflow.clip),
-                            controller: _unameController,
+                            controller: _nameController,
                             keyboardType: TextInputType.text,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -96,7 +92,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ),
                       const SizedBox(
                         height: 45,
-                        child: SimpleListDialogWidget(),
+                        child: SelectGenderButton(),
                       ),
                     ],
                   ),
