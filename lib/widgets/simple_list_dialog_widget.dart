@@ -1,6 +1,4 @@
-// ignore_for_file: avoid_print
-
-import 'package:flutter/material.dart';
+import 'package:social_platform/index.dart';
 
 class SimpleListDialogWidget extends StatefulWidget {
   const SimpleListDialogWidget({super.key});
