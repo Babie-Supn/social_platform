@@ -1,4 +1,5 @@
 import 'package:social_platform/index.dart';
+import 'package:social_platform/widgets/add_blog_widget.dart';
 
 class AddBlogPage extends StatefulWidget {
   const AddBlogPage({super.key});
@@ -32,6 +33,7 @@ class _AddBlogPageState extends State<AddBlogPage>
               ))
         ],
       ),
+      body: const AddBlogWidget(),
     );
   }
 }
