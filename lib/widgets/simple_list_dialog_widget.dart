@@ -46,15 +46,10 @@ class _SimpleListDialogWidgetState extends State<SimpleListDialogWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return TextButton(
       onPressed: () {
         _simpleDialog();
       },
-      //隆子，这里ElevatedButton的样式怎么去掉呀，太丑了 ^_^
-      // 我给他设置一下圆角边框,又有类报错 T_T,靠你了
-      //
-      // style: const ButtonStyle(
-      //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       child: Row(
         children: [
           Text(

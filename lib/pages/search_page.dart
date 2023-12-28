@@ -13,14 +13,25 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(SocialPlatformIcon.back),
-            onPressed: () {
-              //返回到上一层
-              Navigator.of(context).pop();
-            },
+        leading: IconButton(
+          icon: const Icon(SocialPlatformIcon.back),
+          onPressed: () {
+            //返回到上一层
+            Navigator.of(context).pop();
+          },
+        ),
+        title: const TextField(
+          style: TextStyle(fontSize: 15, overflow: TextOverflow.clip),
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintStyle: TextStyle(fontSize: 12),
+            suffixIcon: Icon(SocialPlatformIcon.search),
+            hintText: "请输入搜索内容",
           ),
-          title: const Text("搜索页")),
+          textAlign: TextAlign.left,
+        ),
+      ),
     );
   }
 }

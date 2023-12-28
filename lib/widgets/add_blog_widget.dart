@@ -21,9 +21,9 @@ class _AddBlogWidgetState extends State<AddBlogWidget> {
             width: 360,
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.onBackground),
-            child: const Column(
+            child: Column(
               children: [
-                Expanded(
+                const Expanded(
                   flex: 1,
                   child: TextField(
                     maxLines: null,
@@ -31,6 +31,17 @@ class _AddBlogWidgetState extends State<AddBlogWidget> {
                         hintText: "分享今日开心事...", border: InputBorder.none),
                   ),
                 ),
+                Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(SocialPlatformIcon.add),
+                          iconSize: 100,
+                        )
+                      ],
+                    ))
               ],
             ))
       ],
