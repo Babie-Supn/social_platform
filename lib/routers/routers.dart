@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import "../pages/tabs/users_page.dart";
+import "package:social_platform/index.dart";
 
 //配置路由
 Map routes = {

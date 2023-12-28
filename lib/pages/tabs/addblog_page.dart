@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../../fonts/social_platform_icon.dart';
+import 'package:social_platform/index.dart';
 
 class AddBlogPage extends StatefulWidget {
   const AddBlogPage({super.key});
