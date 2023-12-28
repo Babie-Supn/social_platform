@@ -4,6 +4,8 @@ import '../search_page.dart';
 import '../../widgets/drawer_left_page.dart';
 import '../../widgets/video_page.dart';
 import '../../fonts/social_platform_icon.dart';
+import '../../data/follow_list.dart';
+import '../../data/person_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +20,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
   }
@@ -26,7 +27,13 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerLeftPage(),
+      drawer: DrawerLeftPage(
+          headImageUrl: personData[0]["headImageUrl"],
+          isAssetsHead: personData[0]["isAssetsHead"],
+          isAssetsBg: personData[0]["isAssetsBg"],
+          backgroundImageUrl: personData[0]["backgroundImageUrl"],
+          userName: personData[0]["userName"],
+          userEmail: personData[0]["userEmail"]),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
@@ -58,15 +65,15 @@ class _HomePageState extends State<HomePage>
       ),
       body: TabBarView(controller: _tabController, children: [
         ListView(
-          children: const [
-            CardPageWidget(
-              headPhotoUrl: "https://www.itying.com/images/flutter/1.png",
-              imageUrlList: [
-                "https://www.itying.com/images/flutter/3.png",
-                "https://www.itying.com/images/flutter/3.png"
-              ],
-            ),
-          ],
+          children: followInfoList.map((e) {
+            return CardPageWidget(
+                headPhotoUrl: e["headImageUrl"],
+                imageUrlList: e["userUpImage"],
+                userName: e["userName"],
+                imageHeight: e["imageHeight"],
+                isAssetsHead: e["isAssetsHead"],
+                isAssetsList: e["isAssetsList"]);
+          }).toList(),
         ),
         const VideoPage(),
       ]),

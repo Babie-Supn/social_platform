@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import '../pages/user_info_page.dart';
+import '../fonts/social_platform_icon.dart';
 
 class DrawerLeftPage extends StatefulWidget {
-  const DrawerLeftPage({super.key});
+  final String headImageUrl;
+  final bool isAssetsHead;
+  final bool isAssetsBg;
+  final String backgroundImageUrl;
+  final String userName;
+  final String userEmail;
+  const DrawerLeftPage(
+      {super.key,
+      required this.headImageUrl,
+      required this.isAssetsHead,
+      required this.isAssetsBg,
+      required this.backgroundImageUrl,
+      required this.userName,
+      required this.userEmail});
 
   @override
   State<DrawerLeftPage> createState() => _DrawerLeftPageState();
@@ -16,18 +30,22 @@ class _DrawerLeftPageState extends State<DrawerLeftPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              const UserAccountsDrawerHeader(
-                accountName: Text("xxx"),
-                accountEmail: Text("xxxx"),
+              UserAccountsDrawerHeader(
+                accountName: Text(widget.userName),
+                accountEmail: Text(widget.userEmail),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://www.itying.com/images/flutter/2.png'),
+                  backgroundImage: widget.isAssetsHead
+                      ? AssetImage(widget.headImageUrl) as ImageProvider
+                      : NetworkImage(widget.headImageUrl),
                 ),
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            'https://www.itying.com/images/flutter/2.png'),
-                        fit: BoxFit.cover)),
+                  image: DecorationImage(
+                      image: widget.isAssetsBg
+                          ? AssetImage(widget.backgroundImageUrl)
+                              as ImageProvider
+                          : NetworkImage(widget.backgroundImageUrl),
+                      fit: BoxFit.cover),
+                ),
               ),
               Expanded(
                   child: ListView(
@@ -45,7 +63,10 @@ class _DrawerLeftPageState extends State<DrawerLeftPage> {
                           }));
                         },
                         child: const Row(
-                          children: [Icon(Icons.people), Text("个人信息")],
+                          children: [
+                            Icon(SocialPlatformIcon.user),
+                            Text("个人信息")
+                          ],
                         )),
                   ),
                   ListTile(

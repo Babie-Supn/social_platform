@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../user_info_page.dart';
+import '../../data/person_data.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
@@ -35,10 +36,15 @@ class _UsersPageState extends State<UsersPage>
             children: [
               FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
-                background: Image.network(
-                  "https://www.itying.com/images/flutter/3.png",
-                  fit: BoxFit.cover,
-                ),
+                background: personData[0]["isAssetsBg"]
+                    ? Image.asset(
+                        personData[0]["backgroundImageUrl"],
+                        fit: BoxFit.cover,
+                      )
+                    : Image.network(
+                        personData[0]["backgroundImageUrl"],
+                        fit: BoxFit.cover,
+                      ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -61,17 +67,20 @@ class _UsersPageState extends State<UsersPage>
                 width: 20,
               ),
               Container(
-                  padding: const EdgeInsets.all(1),
-                  height: 80,
-                  width: 80,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(40)),
-                  child: const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://www.itying.com/images/flutter/3.png"),
-                  )),
+                padding: const EdgeInsets.all(1),
+                height: 80,
+                width: 80,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(40)),
+                child: CircleAvatar(
+                  backgroundImage: personData[0]["isAssetsHead"]
+                      ? AssetImage(personData[0]["headImageUrl"])
+                          as ImageProvider
+                      : NetworkImage(personData[0]["headImageUrl"]),
+                ),
+              ),
               const SizedBox(width: 10),
-              const SizedBox(
+              SizedBox(
                 height: 80,
                 width: 200,
                 child: Column(
@@ -79,12 +88,12 @@ class _UsersPageState extends State<UsersPage>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "xxxx",
-                      style: TextStyle(fontSize: 16),
+                      personData[0]["userName"],
+                      style: const TextStyle(fontSize: 16),
                     ),
                     Text(
-                      "Uid: xxxxx",
-                      style: TextStyle(fontSize: 15),
+                      "Uid: ${personData[0]["userID"]}",
+                      style: const TextStyle(fontSize: 15),
                     )
                   ],
                 ),

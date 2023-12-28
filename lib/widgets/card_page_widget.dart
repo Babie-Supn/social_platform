@@ -5,8 +5,18 @@ import '../fonts/social_platform_icon.dart';
 class CardPageWidget extends StatefulWidget {
   final String headPhotoUrl;
   final List<String> imageUrlList;
+  final String userName;
+  final double imageHeight;
+  final bool isAssetsHead;
+  final bool isAssetsList;
   const CardPageWidget(
-      {super.key, required this.headPhotoUrl, required this.imageUrlList});
+      {super.key,
+      required this.headPhotoUrl,
+      required this.imageUrlList,
+      required this.userName,
+      required this.imageHeight,
+      required this.isAssetsHead,
+      required this.isAssetsList});
 
   @override
   State<CardPageWidget> createState() => _CardPageWidgetState();
@@ -31,12 +41,21 @@ class _CardPageWidgetState extends State<CardPageWidget> {
                       ),
                       CircleAvatar(
                         radius: 20,
-                        backgroundImage: NetworkImage(widget.headPhotoUrl),
+                        backgroundImage: widget.isAssetsHead
+                            ? AssetImage(widget.headPhotoUrl) as ImageProvider
+                            : NetworkImage(widget.headPhotoUrl),
+                        // child: widget.isAssetsHead
+                        //     ? Image.asset(
+                        //         widget.headPhotoUrl,
+                        //       )
+                        //     : Image.network(
+                        //         widget.headPhotoUrl,
+                        //       ),
                       ),
                       const SizedBox(
                         width: 5,
                       ),
-                      const Text("UserName"),
+                      Text(widget.userName),
                     ],
                   ),
                   IconButton(
@@ -49,11 +68,19 @@ class _CardPageWidgetState extends State<CardPageWidget> {
             ),
             SizedBox(
               width: double.infinity,
-              height: 200,
+              height: widget.imageHeight,
               child: PageView(
-                  children: widget.imageUrlList.map((e) {
-                return ImagePageWidget(imageUrl: e);
-              }).toList()),
+                  children: widget.isAssetsList
+                      ? widget.imageUrlList.map((e) {
+                          return ImagePageWidget(
+                            assetsImgUrl: e,
+                          );
+                        }).toList()
+                      : widget.imageUrlList.map((e) {
+                          return ImagePageWidget(
+                            netImgUrl: e,
+                          );
+                        }).toList()),
             ),
             SizedBox(
               height: 70,

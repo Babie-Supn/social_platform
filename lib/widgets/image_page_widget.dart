@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ImagePageWidget extends StatefulWidget {
-  final String imageUrl;
-  const ImagePageWidget({super.key, required this.imageUrl});
+  final String assetsImgUrl;
+  final String netImgUrl;
+  const ImagePageWidget(
+      {super.key, this.assetsImgUrl = "", this.netImgUrl = ""});
 
   @override
   State<ImagePageWidget> createState() => _ImagePageWidgetState();
@@ -13,10 +15,15 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Image.network(
-        widget.imageUrl,
-        fit: BoxFit.cover,
-      ),
+      child: widget.assetsImgUrl != ""
+          ? Image.asset(
+              widget.assetsImgUrl,
+              fit: BoxFit.cover,
+            )
+          : Image.network(
+              widget.netImgUrl,
+              fit: BoxFit.cover,
+            ),
     );
   }
 }
