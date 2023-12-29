@@ -1,6 +1,8 @@
 import 'package:social_platform/index.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     ProviderScope(
       overrides: [
